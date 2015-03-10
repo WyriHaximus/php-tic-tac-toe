@@ -152,6 +152,11 @@ class Game
         return $this->board;
     }
 
+    public function getPlayers()
+    {
+        $this->players->getPlayers();
+    }
+
     public function start()
     {
         $this->players->getNextPlayer()->move($this);
