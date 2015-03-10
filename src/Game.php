@@ -192,11 +192,11 @@ class Game
             $this->deferred->resolve([
                 [
                     $player,
-                    'tie',
+                    'tied',
                 ],
                 [
                     $this->players->getNextPlayer(),
-                    'tie',
+                    'tied',
                 ],
             ]);
             return;
