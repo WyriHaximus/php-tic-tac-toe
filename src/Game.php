@@ -176,11 +176,29 @@ class Game
         $this->board[$cell['col']][$cell['row']] = $this->players->getSign($player);
 
         if ($this->hasEnded()) {
-            $this->deferred->resolve('Game won');
+            $this->deferred->resolve([
+                [
+                    $player,
+                    'won',
+                ],
+                [
+                    $this->players->getNextPlayer(),
+                    'lost',
+                ],
+            ]);
             return;
         }
         if ($this->boardFull()) {
-            $this->deferred->resolve('Tie');
+            $this->deferred->resolve([
+                [
+                    $player,
+                    'tie',
+                ],
+                [
+                    $this->players->getNextPlayer(),
+                    'tie',
+                ],
+            ]);
             return;
         }
 
