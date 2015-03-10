@@ -1,0 +1,16 @@
+{
+    "name": "wyrihaximus/tic-tac-toe",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cees-Jan Kiewiet",
+            "email": "ceesjank@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "WyriHaximus\\TicTacToe\\": "src/"
+        }
+    }
+}
