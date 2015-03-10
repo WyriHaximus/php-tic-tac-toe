@@ -7,7 +7,9 @@
             "email": "ceesjank@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "react/promise": "~2.2"
+    },
     "autoload": {
         "psr-4": {
             "WyriHaximus\\TicTacToe\\": "src/"

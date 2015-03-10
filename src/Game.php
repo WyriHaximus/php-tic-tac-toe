@@ -2,9 +2,13 @@
 
 namespace WyriHaximus\TicTacToe;
 
+use React\Promise\Deferred;
+
 class Game
 {
     protected $players;
+
+    protected $deferred;
 
     protected $board = [
         'a' => [
@@ -157,8 +161,9 @@ class Game
         $this->players->getPlayers();
     }
 
-    public function start()
+    public function start(Deferred $deferred)
     {
+        $this->deferred = $deferred;
         $this->players->getNextPlayer()->move($this);
     }
 
@@ -171,15 +176,15 @@ class Game
         $this->board[$cell['col']][$cell['row']] = $this->players->getSign($player);
 
         if ($this->hasEnded()) {
-            var_export($this->board);
-            die('Game won');
+            $this->deferred->resolve('Game won');
+            return;
         }
         if ($this->boardFull()) {
-            var_export($this->board);
-            die('Tie');
+            $this->deferred->resolve('Tie');
+            return;
         }
 
-        $this->start();
+        $this->start($this->deferred);
     }
 
     protected function hasEnded()
